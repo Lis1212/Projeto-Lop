@@ -4,59 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carro 3D</title>
-
     <link rel="stylesheet" href="style.css">
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
 </head>
-
 <body>
 
-<a-scene>
+    <a-scene>
+        <a-entity environment="
+          preset: starry;
+          groundColor: #2c3e50;
+          dressingAmount: 100;
+          dressingColor: #7f8c8d;
+          playArea: 100;
+"></a-entity>
 
-    <a-entity environment="
-        preset: starry;
-        groundColor: #2c3e50;
-        dressingAmount: 100;
-        dressingColor: #7f8c8d;
-        playArea: 100;">
-    </a-entity>
 
-    <!-- carro -->
-    <a-entity id="carro" position="0 0.5 0">
+        <a-entity id="carro" position="0 0.5 0" rotation="0 0 0">
+            <a-box position="0 0.5 0" width="2" height="1" depth="4" color="#1565ff"></a-box>
 
-        <a-box position="0 0.5 0"
-               width="2" height="1" depth="4"
-               color="#1565ff">
-        </a-box>
+            <a-box position="0 1.5 -0.5" width="2" height="1" depth="2" color="#0d47a1"></a-box>
 
-        <a-box position="0 1.5 -0.5"
-               width="2" height="1" depth="2"
-               color="#0d47a1">
-        </a-box>
+            <a-cylinder position="1.1 0 1.5" radius="0.5" height="0.4" rotation="0 0 90" color="black"></a-cylinder>
+            <a-cylinder position="-1.1 0 1.5" radius="0.5" height="0.4" rotation="0 0 90" color="black"></a-cylinder>
+            <a-cylinder position="1.1 0 -1.5" radius="0.5" height="0.4" rotation="0 0 90" color="black"></a-cylinder>
+            <a-cylinder position="-1.1 0 -1.5" radius="0.5" height="0.4" rotation="0 0 90" color="black"></a-cylinder>
+        </a-entity>
 
-        <a-cylinder position="1.1 0 1.5" radius="0.5" height="0.4" color="black"></a-cylinder>
-        <a-cylinder position="-1.1 0 1.5" radius="0.5" height="0.4" color="black"></a-cylinder>
-        <a-cylinder position="1.1 0 -1.5" radius="0.5" height="0.4" color="black"></a-cylinder>
-        <a-cylinder position="-1.1 0 -1.5" radius="0.5" height="0.4" color="black"></a-cylinder>
+        <a-entity id="cameraRig" position="0 6 10">
+            <a-camera look-controls-enabled="false"></a-camera>
+        </a-entity>
+    </a-scene>
 
-    </a-entity>
-
-    <!-- câmera -->
-    <a-entity id="cameraRig" position="0 6 10">
-        <a-camera look-controls-enabled="false"></a-camera>
-    </a-entity>
-
-</a-scene>
-
-<!-- controle -->
+  
 <div id="controles">
-    <button id="btFrente">▲</button>
-    <button id="btEsquerda">◀</button>
-    <button id="btTras">▼</button>
-    <button id="btDireita">▶</button>
+    <button id="btnFrente">▲</button>
+    <button id="btnEsquerda">◀</button>
+    <button id="btnTras">▼</button>
+    <button id="btnDireita">▶</button>
 </div>
 
-<script src="script.js"></script>
+
+    <script src="script.js"></script>
 </body>
-</html>
+</html
