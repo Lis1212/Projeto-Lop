@@ -1,41 +1,29 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html, body{
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    font-family:Arial, sans-serif;
-}
-
-body{
-    background:#87CEEB;
-}
-
-a-scene{
-    position: fixed;
-    top: 0;
-    left: 0;
+html, body {
     width: 100%;
     height: 100%;
-}
+    overflow: hidden;
+    font-family: Arial, sans-serif;
 
-/* CONTROLE */
+  
+}
 #controles {
     position: fixed;
     bottom: 25px;
-    left: 20px;
+    left: 20px; /* lado esquerdo */
     display: grid;
     grid-template-columns: 45px 45px 45px;
     grid-template-rows: 45px 45px;
     gap: 8px;
     z-index: 999;
-    transform: translateZ(0);
 }
 
+/* botões */
 #controles button {
     width: 45px;
     height: 45px;
@@ -46,14 +34,29 @@ a-scene{
     color: white;
 }
 
-/* posições */
-#btFrente { grid-column: 2; grid-row: 1; }
-#btEsquerda { grid-column: 1; grid-row: 2; }
-#btTras { grid-column: 2; grid-row: 2; }
-#btDireita { grid-column: 3; grid-row: 2; }
+#btnFrente {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+#btnEsquerda {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+#btnTras {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+#btnDireita {
+    grid-column: 3;
+    grid-row: 2;
+}
+}
 
 
-#controles button:active {
-    transform: scale(0.9);
-    background: rgba(0,0,0,0.8);
+a-scene {
+    width: 100%;
+    height: 100vh;
 }
