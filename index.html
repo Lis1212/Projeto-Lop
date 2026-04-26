@@ -17,9 +17,7 @@
 <!-- biblioteca do cenario -->
 <a-entity environment="
 preset: starry;
-groundColor: #2c3e50;
-  horizonColor: #4b0082;
-  skyType: gradient; 
+groundColor:#2c3e50 
 dressingAmount: 100;
 dressingColor: #7f8c8d;
 playArea: 100;
@@ -49,15 +47,16 @@ color="#0d47a1">
 </a-box>
 
 <!-- rodas -->
-<a-cylinder position="-1.5 0 1" radius="0.5" height="0.5" rotation="90 0 0" color="black"></a-cylinder>
-<a-cylinder position="1.5 0 1" radius="0.5" height="0.5" rotation="90 0 0" color="black"></a-cylinder>
-<a-cylinder position="-1.5 0 -1" radius="0.5" height="0.5" rotation="90 0 0" color="black"></a-cylinder>
-<a-cylinder position="1.5 0 -1" radius="0.5" height="0.5" rotation="90 0 0" color="black"></a-cylinder>
+
+<a-cylinder position="1.1 0 -1.5" radius="0.5" height="0.4" rotation="0 0 90" color="#111"></a-cylinder>
+<a-cylinder position="-1.1 0 -1.5" radius="0.5" height="0.4" rotation="0 0 90" color="#111"></a-cylinder>
+<a-cylinder position="1.1 0 1.5" radius="0.5" height="0.4" rotation="0 0 90" color="#111"></a-cylinder>
+<a-cylinder position="-1.1 0 1.5" radius="0.5" height="0.4" rotation="0 0 90" color="#111"></a-cylinder>
 
 </a-entity>
 
 <!-- CÂMERA -->
-<a-entity id="camera" position="0 6 10">
+<a-entity id="camera" position="0 6 12">
   <a-camera look-controls-enabled="false"></a-camera>
 </a-entity>
 
