@@ -44,12 +44,35 @@ function atualizar() {
     carro.setAttribute("position", pos);
     carro.setAttribute("rotation", { x: 0, y: angulo, z: 0 });
 
+    // controle mobile
+
+    if (pos.x > 5) {
+    pos.x = -5;
+}
+
+    if (pos.x < -5) {
+    pos.x = 5;
+}
+
+    if (pos.z > 5) {
+    pos.z = -5;
+}
+
+    if (pos.z < -5) {
+    pos.z = 5;
+}
+
+
+
+    
+
     // Câmera 
     cameraRig.setAttribute("position", {
         x: pos.x,
         y: 6,
         z: pos.z + 12
     });
+
 
     requestAnimationFrame(atualizar);
 }
