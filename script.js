@@ -13,6 +13,24 @@ const teclas = {};
 document.addEventListener("keydown", (e) => teclas[e.key.toLowerCase()] = true);
 document.addEventListener("keyup", (e) => teclas[e.key.toLowerCase()] = false);
 
+// controle 
+function segurar(botao, tecla) {
+    const el = document.querySelector(botao);
+
+    el.addEventListener("touchstart", () => teclas[tecla] = true);
+    el.addEventListener("touchend", () => teclas[tecla] = false);
+
+    el.addEventListener("mousedown", () => teclas[tecla] = true);
+    el.addEventListener("mouseup", () => teclas[tecla] = false);
+}
+
+// direção carro
+    segurar("#btFrente", "w");
+    segurar("#btTras", "s");
+    segurar("#btEsquerda", "a");
+    segurar("#btDireita", "d");
+
+
 function atualizar() {
     // lógica de entrada
     if (teclas['w']) velocidade += aceleracao; // frente
@@ -61,23 +79,6 @@ function atualizar() {
     if (pos.z < -5) {
     pos.z = 5;
 }
-
-// controle 
-function segurar(botao, tecla) {
-    const el = document.querySelector(botao);
-
-    el.addEventListener("touchstart", () => teclas[tecla] = true);
-    el.addEventListener("touchend", () => teclas[tecla] = false);
-
-    el.addEventListener("mousedown", () => teclas[tecla] = true);
-    el.addEventListener("mouseup", () => teclas[tecla] = false);
-}
-
-// direção carro
-segurar("#btFrente", "w");
-segurar("#btTras", "s");
-segurar("#btEsquerda", "a");
-segurar("#btDireita", "d");
 
 
 
