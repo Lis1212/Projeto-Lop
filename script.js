@@ -15,8 +15,8 @@ document.addEventListener("keyup", (e) => teclas[e.key.toLowerCase()] = false);
 
 function atualizar() {
     // lógica de entrada
-    if (teclas['w']) velocidade -= aceleracao; // frente
-    if (teclas['s']) velocidade += aceleracao; // trás 
+    if (teclas['w']) velocidade += aceleracao; // frente
+    if (teclas['s']) velocidade -= aceleracao; // trás 
     
     // gira o carro
     if (Math.abs(velocidade) > 0.001) {
@@ -25,7 +25,8 @@ function atualizar() {
     }
 
     // atrito
-    velocidade *= atrito;
+    velocidade *= 0.97;
+    velocidade = Math.max(-0.2, Math.min(0.2, velocidade));
 
     // posição atual
     let pos = carro.getAttribute("position");
@@ -34,8 +35,10 @@ function atualizar() {
     let rad = angulo * (Math.PI / 180);
 
     // Atualiza X e Z baseados no ângulo
-    pos.x += Math.sin(rad) * velocidade;
-    pos.z += Math.cos(rad) * velocidade;
+    const direcao = velocidade;
+
+    pos.x += Math.sin(rad) * direcao;
+    pos.z += Math.cos(rad) * direcao;
 
     // aplica as novas transformações ao carro
     carro.setAttribute("position", pos);
