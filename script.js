@@ -44,7 +44,7 @@ function atualizar() {
     carro.setAttribute("position", pos);
     carro.setAttribute("rotation", { x: 0, y: angulo, z: 0 });
 
-    // controle mobile
+    // cenário 
 
     if (pos.x > 5) {
     pos.x = -5;
@@ -62,9 +62,24 @@ function atualizar() {
     pos.z = 5;
 }
 
+// controle 
+function segurar(botao, tecla) {
+    const el = document.querySelector(botao);
+
+    el.addEventListener("touchstart", () => teclas[tecla] = true);
+    el.addEventListener("touchend", () => teclas[tecla] = false);
+
+    el.addEventListener("mousedown", () => teclas[tecla] = true);
+    el.addEventListener("mouseup", () => teclas[tecla] = false);
+}
+
+// direção carro
+segurar("#btFrente", "w");
+segurar("#btTras", "s");
+segurar("#btEsquerda", "a");
+segurar("#btDireita", "d");
 
 
-    
 
     // Câmera 
     cameraRig.setAttribute("position", {
