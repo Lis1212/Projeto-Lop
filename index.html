@@ -1,69 +1,83 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carro 3D</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <meta charset="UTF-8" />
+  <title> 🚙Rice VR</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
 </head>
 <body>
 
-    <a-scene>
-        <a-plane id="p1" position=" 0 0 -0"></a-plane>
-        <a-plane id="p2" position=" 0 0 -60"></a-plane>
-        <a-plane id="p3" position=" 0 0 -120"></a-plane>
+  <!-- TELA DE INÍCIO -->
+  <div id="tela-inicio" class="tela">
+    <div class="tela-box">
+      <h1> 🚘Rice VR</h1>
+      <p class="subtitulo">Desvie dos obstáculos e sobreviva o maior tempo possível!</p>
+      <div class="recorde-display"> ⭐ Tempo Recorde: <span id="recorde-inicio">0</span> m</div>
+      <div class="controles-info">
+        <span>◀ A — Mover esquerda</span>
+        <span>▶ D — Mover direita</span>
+      </div>
+      <button id="btn-iniciar" class="btn-principal">JOGAR</button>
+    </div>
+  </div>
+
+  <!-- tela de game over -->
+  <div id="tela-gameover" class="tela" style="display:none">
+    <div class="tela-box">
+      <h1>💥 GAME OVER</h1>
+      <div class="resultado">
+        <div class="stat">Distância: <strong><span id="go-dist">0</span> m</strong></div>
+        <div class="stat">Recorde: <strong><span id="go-rec">0</span> m</strong></div>
+        <div id="novo-recorde" style="display:none">🎉 NOVO RECORDE!</div>
+      </div>
+      <button id="btn-reiniciar" class="btn-principal">JOGAR NOVAMENTE</button>
+    </div>
+  </div>
+
+  <!-- HUD -->
+  <div id="hud" style="display:none">
+    <div id="hud-top">
+      <div class="hud-item">📏 <span id="hud-dist">0</span> m</div>
+      <div class="hud-item" id="hud-vidas">❤️ ❤️ ❤️</div>
+      <div class="hud-item">🏆 <span id="hud-rec">0</span> m</div>
+    </div>
+    <div id="hud-periodo"></div>
+  </div>
+
+ <!-- bordas-->
+  <div id="seta-esq" class="seta" style="display:none">◀<span>A</span></div>
+  <div id="seta-dir" class="seta" style="display:none">▶<span>D</span></div>
+
+  <!-- flash de dano-->
+  <div id="flash-dano"></div>
 
 
-        <a-sky color="#87ceeb"></a-sky>
+  <a-scene vr-mode-ui="enabled: true" renderer="antialias: true">
 
-        <!-- chão -->
-        <a-plane
-            color="#555"
-            rotation="-90 0 0"
-            position="0 0.01 0"
-            width="12"
-            height="200">
-            </a-plane>
+    <a-sky id="ceu" color="#87CEEB"></a-sky>
 
-        
-            <a-plane
-            color="#555"
-            rotation="-90 0 0"
-            position="0 0.01 0"
-            width="12"
-            height="200">
-            </a-plane>
-            
+    <!-- chão infinito -->
+    <a-entity id="chao-container"></a-entity>
 
+    <!-- obstáculos -->
+    <a-entity id="obstaculos"></a-entity>
 
-        <!-- carro-->
-        <a-entity id="carro" position="0 0.5 0" rotation="0 0 0">
-            <a-box position="0 0.5 0" width="2" height="1" depth="4" color="#1565ff"></a-box>
+    <!-- chuva -->
+    <a-entity id="chuva"></a-entity>
 
-            <a-box position="0 1.5 -0.5" width="2" height="1" depth="2" color="#0d47a1"></a-box>
+    <!--  horizonte -->
+    <a-entity id="decoracao"></a-entity>
 
-            <a-cylinder position="1.1 0 1.5" radius="0.5" height="0.4" rotation="0 0 90" color="black"></a-cylinder>
-            <a-cylinder position="-1.1 0 1.5" radius="0.5" height="0.4" rotation="0 0 90" color="black"></a-cylinder>
-            <a-cylinder position="1.1 0 -1.5" radius="0.5" height="0.4" rotation="0 0 90" color="black"></a-cylinder>
-            <a-cylinder position="-1.1 0 -1.5" radius="0.5" height="0.4" rotation="0 0 90" color="black"></a-cylinder>
-        </a-entity>
+    <!-- movimento com a cabeça -->
+    <a-entity id="camera-rig" position="0 1.6 0">
+      <a-camera id="camera" look-controls="enabled: true" wasd-controls="enabled: false" fov="85"></a-camera>
+    </a-entity>
 
-        <!-- camera -->    
-        <a-entity id="cameraRig" position="0 6 10">
-            <a-camera look-controls-enabled="false"></a-camera>
-        </a-entity>
-    </a-scene>
+    <a-light type="ambient"     id="luz-ambiente"   color="#fff" intensity="0.7"></a-light>
+    <a-light type="directional" id="luz-direcional" color="#fff" intensity="0.9" position="1 3 1"></a-light>
+  </a-scene>
 
-  
-<div id="controles">
-    <button id="btnFrente">▲</button>
-    <button id="btnEsquerda">◀</button>
-    <button id="btnTras">▼</button>
-    <button id="btnDireita">▶</button>
-</div>
-
-
-    <script src="script.js"></script>
+  <script src="game.js"></script>
 </body>
-</html
+</html>
