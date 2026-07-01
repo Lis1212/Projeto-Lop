@@ -10,6 +10,7 @@ https://lis1212.github.io/Projeto-Lop/
 # Funcionalidades 
 Controle de objeto (carro) via teclado;
 Cena 3D básica com A-Frame;
+Interação em VR;
 Câmera acompanhando o objeto.
 
 
