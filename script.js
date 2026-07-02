@@ -420,7 +420,7 @@ function iniciarJogo() {
       }
     });
 
-    // ── Ciclo dia/noite ───────────────────────────────────────
+    // ── Ciclo dia/noite 
     tPeriodo += dt;
     const t = Math.min(tPeriodo / DUR_PERIODO, 1);
     const pAtual = periodos[periodoAtual];
@@ -449,7 +449,7 @@ function iniciarJogo() {
       }
     }
 
-    // ── Chuva ─────────────────────────────────────────────────
+    // chuva
     if (chuvaAtiva) {
       gotas.forEach(g => {
         const p = g.el.getAttribute("position");
@@ -464,7 +464,7 @@ function iniciarJogo() {
       });
     }
 
-    // ── HUD ───────────────────────────────────────────────────
+    // hud
     hudDist.textContent = Math.round(distancia);
     hudRec.textContent  = Math.max(Math.round(distancia), recorde);
   }
